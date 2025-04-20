@@ -1,13 +1,12 @@
-
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>User | Login Page</title>
+    <title>AdminLTE 4 | Simple Tables</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="User | Login Page" />
+    <meta name="title" content="AdminLTE 4 | Simple Tables" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -43,100 +42,125 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./admin/dist/css/adminlte.css" />
+    <link rel="stylesheet" href="dist/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
   <!--end::Head-->
   <!--begin::Body-->
-  <body class="login-page bg-body-secondary">
-    <div class="login-box">
-      <div class="login-logo">
-      <span id="response" class="fs-2 text-center"></span>
-        <a href="./"><b>User</b>&nbsp;Login</a>
-      </div>
-      <!-- /.login-logo -->
-      <div class="card">
-        <div class="card-body login-card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
-          <form  id="userlogin" method="post">
-            <div class="input-group mb-3">
-              <input type="text" name="userID" class="form-control" placeholder="User ID" />
-              <div class="input-group-text"><span class="bi bi-person"></span></div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="password" name="password"  class="form-control" placeholder="Password" />
-              <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
-            </div>
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <!--begin::App Wrapper-->
+<?php include_once 'layout/sidebar.php';?>
+        <!--end::Sidebar Wrapper-->
+      </aside>
+      <!--end::Sidebar-->
+      <!--begin::App Main-->
+
+
+<!-- form -->
+
+
+<div class="app-content"><br/><br/>
+          <!--begin::Container-->
+          <div class="container-fluid ">
             <!--begin::Row-->
-            <div class="row">
-              <!-- <div class="col-8">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault"> Remember Me </label>
-                </div>
-              </div> -->
-              <!-- /.col -->
-              <div class="col-4">
-</div>
-              <div class="col-4">
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary">Sign In</button>
-                </div>
-              </div>
-              <div class="col-4">
-              
-</div>
-              <!-- /.col -->
+            <div class="row g-4">
+              <!--begin::Col-->
+             
+              <!--end::Col-->
+              <!--begin::Col-->
+              <div class="col-12">
+                <!--begin::Quick Example-->
+                <div class="card card-primary card-outline mb-4">
+                  <!--begin::Header-->
+                  <div class="card-header"><div class="card-title">Quick Example</div></div>
+                  <!--end::Header-->
+                  <!--begin::Form-->
+
+
+
+                  <!--begin::Form-->
+<form>
+  <!--begin::Body-->
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
             </div>
-            <!--end::Row-->
-          </form>
-                  </div>
-        <!-- /.login-card-body -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3"> <label for="exampleInputMobile" class="form-label">Mob. No.</label>
+    <input type="tel" class="form-control" id="exampleInputMobile" placeholder="Enter your mobile number" />
+ 
+          </div>
+        </div>
+        <div class="col-md-6">
+
+        
+          <div class="input-group mb-3">
+          <label class="input-group-text" >Email</label>
+
+            <input type="email" class="form-control"  />
+          </div>
+        </div> <div class="col-md-6">
+
+        
+<div class="input-group mb-3">
+  <input type="file" class="form-control" id="inputGroupFile02" />
+  <label class="input-group-text" for="inputGroupFile02">Upload</label>
+</div>
+</div>
       </div>
     </div>
-    <!-- /.login-box -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-</script>	
-    <script>	
-$(document).ready(function() {
-
-    $('#userlogin').on('submit', function(e) {
-		e.preventDefault(); // Prevent the default form submission
-
-		$.ajax({
-      url: './processData/userlogin.php', 
-      type: 'POST',
-      data: new FormData(this),
-            contentType: false,
-            processData: false,
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    $('#response').html('<p class="text-success">' + response.message + '</p>');
-					        alert('User succesfully loogged in');
-					window.location='user.php';
-                } else {
-
- 
-                    
-                    $('#response').html('<p class="text-danger">' + response.message + '</p>');
-					
-                }
-              }
-            ,
-            error: function() {
-                $('#response').html('<p>An error occurred while submitting the form.</p>');
-            }
-    });
-});
-});
+  </div>
+  <!--end::Body-->
+  <!--begin::Footer-->
+  <div class="card-footer">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  <!--end::Footer-->
+</form>
+<!--end::Form-->
 
 
-    </script>
 
+                  <!--end::Form-->
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
 
+<!--  -->
+
+           <!--end::App Main-->
+      <!--begin::Footer-->
+      <footer class="app-footer">
+        <!--begin::To the end-->
+        <div class="float-end d-none d-sm-inline">Anything you want</div>
+        <!--end::To the end-->
+        <!--begin::Copyright-->
+        <strong>
+          Copyright &copy; 2014-2024&nbsp;
+          <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
+        </strong>
+        All rights reserved.
+        <!--end::Copyright-->
+      </footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
@@ -156,7 +180,7 @@ $(document).ready(function() {
       crossorigin="anonymous"
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="./admin/dist/js/adminlte.js"></script>
+    <script src="dist/js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
@@ -183,3 +207,10 @@ $(document).ready(function() {
   </body>
   <!--end::Body-->
 </html>
+
+
+
+
+
+
+

@@ -1,13 +1,14 @@
 
+
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>User | Login Page</title>
+    <title>AdminLTE 4 | Login Page</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="User | Login Page" />
+    <meta name="title" content="AdminLTE 4 | Login Page" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -43,7 +44,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./admin/dist/css/adminlte.css" />
+    <link rel="stylesheet" href="./dist/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
   <!--end::Head-->
@@ -51,14 +52,14 @@
   <body class="login-page bg-body-secondary">
     <div class="login-box">
       <div class="login-logo">
-      <span id="response" class="fs-2 text-center"></span>
-        <a href="./"><b>User</b>&nbsp;Login</a>
-      </div>
+      <span id="response"></span>
+        <a href="./"><b>Admin</b>LTE</a>
+      </div>  
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
           <p class="login-box-msg">Sign in to start your session</p>
-          <form  id="userlogin" method="post">
+          <form id="adminlogin" method="post">
             <div class="input-group mb-3">
               <input type="text" name="userID" class="form-control" placeholder="User ID" />
               <div class="input-group-text"><span class="bi bi-person"></span></div>
@@ -84,7 +85,6 @@
                 </div>
               </div>
               <div class="col-4">
-              
 </div>
               <!-- /.col -->
             </div>
@@ -102,11 +102,11 @@
     <script>	
 $(document).ready(function() {
 
-    $('#userlogin').on('submit', function(e) {
+    $('#adminlogin').on('submit', function(e) {
 		e.preventDefault(); // Prevent the default form submission
 
 		$.ajax({
-      url: './processData/userlogin.php', 
+      url: '../processData/adminlogin.php', 
       type: 'POST',
       data: new FormData(this),
             contentType: false,
@@ -115,8 +115,8 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.status === 'success') {
                     $('#response').html('<p class="text-success">' + response.message + '</p>');
-					        alert('User succesfully loogged in');
-					window.location='user.php';
+					        alert('Admin succesfully loogged in');
+					window.location='dashboard.php';
                 } else {
 
  
@@ -156,7 +156,7 @@ $(document).ready(function() {
       crossorigin="anonymous"
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="./admin/dist/js/adminlte.js"></script>
+    <script src="./dist/js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
